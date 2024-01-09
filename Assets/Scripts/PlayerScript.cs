@@ -5,12 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerScript : MonoBehaviour
 {
-    private bool interactable = false
+    private bool interactable = false;
     private Vector2 movementInput;
     private Rigidbody2D rb;
+    private NPCScript npc;
     public HUDScript hud;
     private Vector2 move;
-    private bool canMove = true;
     public float speed = 1f;
     public bool pressingMoveX = false;
     public bool pressingMoveY = false;
@@ -21,11 +21,19 @@ public class PlayerScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void PauseGame(InputAction.CallbackContext context)
+    public void OnPauseGame()
     {
-        if (context.started && (!hud.GetIsPaused() || hud.pausePanel.activeInHierarchy))
+        if (!hud.GetIsPaused() || hud.pausePanel.activeInHierarchy)
         {
             hud.PauseGame(!hud.GetIsPaused());
+        }
+    }
+
+    public void OnInteract()
+    {
+        if (interactable)
+        {
+            npc.Interact();
         }
     }
 
@@ -34,21 +42,32 @@ public class PlayerScript : MonoBehaviour
         rb.MovePosition(rb.position + movementInput * speed * Time.fixedDeltaTime);
     }
 
-    void OnMove(InputValue value)
+    public void OnMove(InputValue value)
     {
         movementInput = value.Get<Vector2>();
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        string tag = other.collider.tag;
-        if tag.Equals("NPC")
+        string tag = other.GetComponent<Collider2D>().tag;
+        if (tag.Equals("NPC"))
         {
+            npc = other.transform.GetComponent<NPCScript>();
             interactable = true;
         }
-        else if tag.Equals("SceneChanger")
+        else if (tag.Equals("SceneChanger"))
         {
-            other.ChangeScene();
+            other.transform.GetComponent<SceneChanger>().ChangeScene();
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        string tag = other.GetComponent<Collider2D>().tag;
+        if (tag.Equals("NPC"))
+        {
+            npc = null;
+            interactable = false;
         }
     }
 }

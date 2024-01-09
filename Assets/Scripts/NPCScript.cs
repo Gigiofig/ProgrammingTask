@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class NPCScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    void Interact()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
