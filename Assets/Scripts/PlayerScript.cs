@@ -15,27 +15,24 @@ public class PlayerScript : MonoBehaviour
     public HUDScript hud;
     private Vector2 move;
     public float speed = 1f;
-    public GameObject HairComponent;
-    public GameObject HatComponent;
-    public GameObject ClothesComponent;
-    public bool pressingMoveX = false;
-    public bool pressingMoveY = false;
-    public bool overrideX = false;
+    public SpriteRenderer HairComponent;
+    public SpriteRenderer HatComponent;
+    public SpriteRenderer ClothesComponent;
 
 
     void Start()
     {
         if (hasClothes)
         {
-            ClothesComponent.SetActive(true);
+            ClothesComponent.enabled = true;
         }
         if (hasHat)
         {
-            HatComponent.SetActive(true);
+            HatComponent.enabled = true;
         }
         if (hasHair)
         {
-            HairComponent.SetActive(true);
+            HairComponent.enabled = true;
         }
         rb = GetComponent<Rigidbody2D>();
     }
