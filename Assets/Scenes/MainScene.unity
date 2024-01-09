@@ -65006,6 +65006,14 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PauseGame
       objectReference: {fileID: 0}
+    - target: {fileID: 6159869101250313519, guid: 2f221458f8861a235af14c8877f67162, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6050531, guid: 66d402255a99de29f865abb5d3e64e05, type: 3}
+    - target: {fileID: 6159869101250313519, guid: 2f221458f8861a235af14c8877f67162, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7232332222121510720, guid: 2f221458f8861a235af14c8877f67162, type: 3}
       propertyPath: m_Name
       value: Player
@@ -65062,6 +65070,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9213608411517416669, guid: 2f221458f8861a235af14c8877f67162, type: 3}
+      propertyPath: skins.Array.data[0].sprites.Array.data[64]
+      value: 
+      objectReference: {fileID: -758903513, guid: 9302bd38453779b74b3e786f3ae70a80, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f221458f8861a235af14c8877f67162, type: 3}
 --- !u!4 &7232332222368591120 stripped
