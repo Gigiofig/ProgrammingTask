@@ -19,6 +19,7 @@ public class NPCScript : MonoBehaviour
     [SerializeField] Image hatPreview;
     [SerializeField] Image clothesPreview;
     [SerializeField] PlayerScript player;
+    public SpriteRenderer inAreaNotification;
 
     private void Start()
     {

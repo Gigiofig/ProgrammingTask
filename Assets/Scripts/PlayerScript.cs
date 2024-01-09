@@ -18,6 +18,7 @@ public class PlayerScript : MonoBehaviour
     public SpriteRenderer HairComponent;
     public SpriteRenderer HatComponent;
     public SpriteRenderer ClothesComponent;
+    private Animator playerAnimator;
 
 
     void Start()
@@ -35,6 +36,7 @@ public class PlayerScript : MonoBehaviour
             HairComponent.enabled = true;
         }
         rb = GetComponent<Rigidbody2D>();
+        playerAnimator = GetComponent<Animator>();
     }
 
     public void OnPauseGame()
@@ -61,6 +63,8 @@ public class PlayerScript : MonoBehaviour
     public void OnMove(InputValue value)
     {
         movementInput = value.Get<Vector2>();
+        playerAnimator.SetFloat("Horizontal", movementInput.x);
+        playerAnimator.SetFloat("Vertical", movementInput.y);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -69,6 +73,7 @@ public class PlayerScript : MonoBehaviour
         if (tag.Equals("NPC"))
         {
             npc = other.transform.GetComponent<NPCScript>();
+            npc.inAreaNotification.enabled = true;
             interactable = true;
         }
         else if (tag.Equals("SceneChanger"))
@@ -82,6 +87,7 @@ public class PlayerScript : MonoBehaviour
         string tag = other.GetComponent<Collider2D>().tag;
         if (tag.Equals("NPC"))
         {
+            npc.inAreaNotification.enabled = false;
             npc = null;
             interactable = false;
         }
