@@ -200,7 +200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.254475, y: -0.8337206, z: -10.159133}
+  m_LocalPosition: {x: -10.73, y: -0.8337206, z: -10.159133}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -64974,6 +64974,10 @@ PrefabInstance:
       propertyPath: hud
       value: 
       objectReference: {fileID: 1159899696}
+    - target: {fileID: 972935615816261834, guid: 2f221458f8861a235af14c8877f67162, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1664230985740747063, guid: 2f221458f8861a235af14c8877f67162, type: 3}
       propertyPath: m_DefaultActionMap
       value: Player
@@ -65006,13 +65010,29 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PauseGame
       objectReference: {fileID: 0}
+    - target: {fileID: 2618016515601351006, guid: 2f221458f8861a235af14c8877f67162, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2618016515601351006, guid: 2f221458f8861a235af14c8877f67162, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484095522501566940, guid: 2f221458f8861a235af14c8877f67162, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4484095522501566940, guid: 2f221458f8861a235af14c8877f67162, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6159869101250313519, guid: 2f221458f8861a235af14c8877f67162, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 6050531, guid: 66d402255a99de29f865abb5d3e64e05, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 6159869101250313519, guid: 2f221458f8861a235af14c8877f67162, type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7232332222121510720, guid: 2f221458f8861a235af14c8877f67162, type: 3}
       propertyPath: m_Name
@@ -65028,7 +65048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7232332222121510722, guid: 2f221458f8861a235af14c8877f67162, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.9899998
+      value: -11.96
       objectReference: {fileID: 0}
     - target: {fileID: 7232332222121510722, guid: 2f221458f8861a235af14c8877f67162, type: 3}
       propertyPath: m_LocalPosition.y
@@ -65067,13 +65087,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7232332222121510723, guid: 2f221458f8861a235af14c8877f67162, type: 3}
+      propertyPath: m_Size.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7232332222121510723, guid: 2f221458f8861a235af14c8877f67162, type: 3}
+      propertyPath: m_Size.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7232332222121510723, guid: 2f221458f8861a235af14c8877f67162, type: 3}
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 9213608411517416669, guid: 2f221458f8861a235af14c8877f67162, type: 3}
-      propertyPath: skins.Array.data[0].sprites.Array.data[64]
-      value: 
-      objectReference: {fileID: -758903513, guid: 9302bd38453779b74b3e786f3ae70a80, type: 3}
+    - target: {fileID: 7232332222121510723, guid: 2f221458f8861a235af14c8877f67162, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f221458f8861a235af14c8877f67162, type: 3}
 --- !u!4 &7232332222368591120 stripped
@@ -65135,6 +65163,10 @@ PrefabInstance:
     - target: {fileID: 7912945652031894124, guid: fa39591ded912f7f39f3b2c725ccfb8a, type: 3}
       propertyPath: sceneName
       value: Indoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 7912945652031894124, guid: fa39591ded912f7f39f3b2c725ccfb8a, type: 3}
+      propertyPath: isNextScene
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7912945652031894125, guid: fa39591ded912f7f39f3b2c725ccfb8a, type: 3}
       propertyPath: m_Name

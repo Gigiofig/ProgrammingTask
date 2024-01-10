@@ -19,7 +19,11 @@ public class NPCScript : MonoBehaviour
     [SerializeField] Image hatPreview;
     [SerializeField] Image clothesPreview;
     [SerializeField] PlayerScript player;
+    [SerializeField] private SceneInfo sceneInfo;
     public SpriteRenderer inAreaNotification;
+    private int hairIndex = 0;
+    private int hatIndex = 0;
+    private int clothesIndex = 0;
 
     private void Start()
     {
@@ -35,12 +39,6 @@ public class NPCScript : MonoBehaviour
     {
         shopUI.SetActive(false);
     }
-    void AddShopEvents()
-    {
-        closeShopButton.onClick.RemoveAllListeners();
-
-        closeShopButton.onClick.AddListener(CloseShop);
-    }
 
     public void OnShopButtonClick()
     {
@@ -49,67 +47,76 @@ public class NPCScript : MonoBehaviour
         {
             if (!hairPreview.enabled)
             {
-                hairBalance = int.Parse(ClickedButton.transform.parent.GetChild(2).GetComponent<TMPro.TMP_Text>().text);
+                hairBalance = int.Parse(ClickedButton.transform.parent.GetChild(3).GetComponent<TMPro.TMP_Text>().text);
                 balance -= hairBalance;
                 hairPreview.enabled = true;
             }
-            else if (hairPreview.sprite == ClickedButton.transform.parent.GetChild(0).GetComponent<Image>().sprite)
+            else if (hairPreview.sprite == ClickedButton.transform.parent.GetChild(1).GetComponent<Image>().sprite)
             {
-                hairBalance = int.Parse(ClickedButton.transform.parent.GetChild(2).GetComponent<TMPro.TMP_Text>().text);
+                hairBalance = int.Parse(ClickedButton.transform.parent.GetChild(3).GetComponent<TMPro.TMP_Text>().text);
                 hairPreview.enabled = false;
                 balance += hairBalance;
             }
             else
             {
                 balance += hairBalance;
-                hairBalance = int.Parse(ClickedButton.transform.parent.GetChild(2).GetComponent<TMPro.TMP_Text>().text);
+                hairBalance = int.Parse(ClickedButton.transform.parent.GetChild(3).GetComponent<TMPro.TMP_Text>().text);
                 balance -= hairBalance;
             }
-            hairPreview.sprite = ClickedButton.transform.parent.GetChild(0).GetComponent<Image>().sprite;
+            hairPreview.sprite = ClickedButton.transform.parent.GetChild(1).GetComponent<Image>().sprite;
+            string buttonName = ClickedButton.transform.parent.name;
+            int pos = buttonName.LastIndexOf('r');
+            hairIndex = int.Parse(buttonName.Remove(0, pos + 1)) - 1;
         }
         else if (ClickedButton.name.Contains("Hat"))
         {
             if (!hatPreview.enabled)
             {
-                hatBalance = int.Parse(ClickedButton.transform.parent.GetChild(2).GetComponent<TMPro.TMP_Text>().text);
+                hatBalance = int.Parse(ClickedButton.transform.parent.GetChild(3).GetComponent<TMPro.TMP_Text>().text);
                 hatPreview.enabled = true;
                 balance -= hatBalance;
             }
-            else if (hatPreview.sprite == ClickedButton.transform.parent.GetChild(0).GetComponent<Image>().sprite)
+            else if (hatPreview.sprite == ClickedButton.transform.parent.GetChild(1).GetComponent<Image>().sprite)
             {
-                hatBalance = int.Parse(ClickedButton.transform.parent.GetChild(2).GetComponent<TMPro.TMP_Text>().text);
+                hatBalance = int.Parse(ClickedButton.transform.parent.GetChild(3).GetComponent<TMPro.TMP_Text>().text);
                 hatPreview.enabled = false;
                 balance += hatBalance;
             }
             else
             {
                 balance += hatBalance;
-                hatBalance = int.Parse(ClickedButton.transform.parent.GetChild(2).GetComponent<TMPro.TMP_Text>().text);
+                hatBalance = int.Parse(ClickedButton.transform.parent.GetChild(3).GetComponent<TMPro.TMP_Text>().text);
                 balance -= hatBalance;
             }
-            hatPreview.sprite = ClickedButton.transform.parent.GetChild(0).GetComponent<Image>().sprite;
+            hatPreview.sprite = ClickedButton.transform.parent.GetChild(1).GetComponent<Image>().sprite;
+            string buttonName = ClickedButton.transform.parent.name;
+            int pos = buttonName.LastIndexOf('t');
+            hatIndex = int.Parse(buttonName.Remove(0, pos + 1)) - 1;
         }
         else if (ClickedButton.name.Contains("Clothes"))
         {
             if (!clothesPreview.enabled)
             {
-                clothesBalance = int.Parse(ClickedButton.transform.parent.GetChild(2).GetComponent<TMPro.TMP_Text>().text);
+                clothesBalance = int.Parse(ClickedButton.transform.parent.GetChild(3).GetComponent<TMPro.TMP_Text>().text);
                 clothesPreview.enabled = true;
                 balance -= clothesBalance;
             }
-            else if (clothesPreview.sprite == ClickedButton.transform.parent.GetChild(0).GetComponent<Image>().sprite)
+            else if (clothesPreview.sprite == ClickedButton.transform.parent.GetChild(1).GetComponent<Image>().sprite)
             {
                 clothesPreview.enabled = false;
-                clothesBalance = int.Parse(ClickedButton.transform.parent.GetChild(2).GetComponent<TMPro.TMP_Text>().text);
+                clothesBalance = int.Parse(ClickedButton.transform.parent.GetChild(3).GetComponent<TMPro.TMP_Text>().text);
                 balance += clothesBalance;
             }
             else
             {
                 balance += clothesBalance;
-                clothesBalance = int.Parse(ClickedButton.transform.parent.GetChild(2).GetComponent<TMPro.TMP_Text>().text);
+                clothesBalance = int.Parse(ClickedButton.transform.parent.GetChild(3).GetComponent<TMPro.TMP_Text>().text);
                 balance -= clothesBalance;
             }
-            clothesPreview.sprite = ClickedButton.transform.parent.GetChild(0).GetComponent<Image>().sprite;
+            clothesPreview.sprite = ClickedButton.transform.parent.GetChild(1).GetComponent<Image>().sprite;
+            string buttonName = ClickedButton.transform.parent.name;
+            int pos = buttonName.LastIndexOf('e');
+            clothesIndex = int.Parse(buttonName.Remove(0, pos + 1)) - 1;
         }
         UpdateBalance();
     }
@@ -134,20 +141,50 @@ public class NPCScript : MonoBehaviour
 
     public void UpdatePlayerVisuals()
     {
-        if (clothesPreview.sprite != null)
+        if (clothesPreview.enabled)
         {
+            sceneInfo.hasClothes = true;
+            sceneInfo.clothesIndex = clothesIndex;
             player.ClothesComponent.enabled = true;
-            player.ClothesComponent.sprite = clothesPreview.sprite;
+            player.customClothes.skinNum = clothesIndex;
+            player.customClothes.SkinChoice();
         }
-        if (hatPreview.sprite != null)
+        else
         {
+            sceneInfo.hasClothes = false;
+            sceneInfo.clothesIndex = 0;
+            player.ClothesComponent.enabled = false;
+            player.customClothes.skinNum = 0;
+        }
+        if (hatPreview.enabled)
+        {
+            sceneInfo.hasHat = true;
+            sceneInfo.hatIndex = hatIndex;
             player.HatComponent.enabled = true;
-            player.HatComponent.sprite = hatPreview.sprite;
+            player.customHat.skinNum = hatIndex;
+            player.customHat.SkinChoice();
         }
-        if (hairPreview.sprite != null)
+        else
         {
+            sceneInfo.hasHat = false;
+            sceneInfo.hatIndex = 0;
+            player.HatComponent.enabled = false;
+            player.customHat.skinNum = 0;
+        }
+        if (hairPreview.enabled)
+        {
+            sceneInfo.hasHair = true;
+            sceneInfo.hairIndex = hairIndex;
             player.HairComponent.enabled = true;
-            player.HairComponent.sprite = hairPreview.sprite;
+            player.customHair.skinNum = hairIndex;
+            player.customHair.SkinChoice();
+        }
+        else
+        {
+            sceneInfo.hasHair = false;
+            sceneInfo.hairIndex = 0;
+            player.HairComponent.enabled = false;
+            player.customHair.skinNum = 0;
         }
     }
 }

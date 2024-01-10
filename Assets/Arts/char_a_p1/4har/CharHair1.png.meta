@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -69,7 +69,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -1462,14 +1462,14 @@ TextureImporter:
       CharHair1_56: 1862384865
       CharHair1_13: 1739376053
       CharHair1_51: -1161176145
+      CharHair1_57: 213886187
       CharHair1_6: 2117015220
       CharHair1_31: -1648509602
       CharHair1_15: 1122546977
       CharHair1_43: 30763584
       CharHair1_17: 554924668
-      CharHair1_59: -2010611918
-      CharHair1_55: 663001080
       CharHair1_62: -1149969748
+      CharHair1_55: 663001080
       CharHair1_18: -10523410
       CharHair1_26: 1809855995
       CharHair1_33: 1618811551
@@ -1491,8 +1491,8 @@ TextureImporter:
       CharHair1_63: -2135443040
       CharHair1_42: -913692420
       CharHair1_35: 439110130
-      CharHair1_16: 625672703
       CharHair1_52: -2009811025
+      CharHair1_16: 625672703
       CharHair1_22: 1962358271
       CharHair1_21: -1027233580
       CharHair1_48: -1938888568
@@ -1515,10 +1515,10 @@ TextureImporter:
       CharHair1_58: 389534659
       CharHair1_44: 659004618
       CharHair1_19: 920524808
+      CharHair1_47: 1475714167
       CharHair1_11: -403382523
       CharHair1_14: -681729719
-      CharHair1_57: 213886187
-      CharHair1_47: 1475714167
+      CharHair1_59: -2010611918
       CharHair1_3: 1187955112
       CharHair1_28: 982427625
       CharHair1_54: 521511893

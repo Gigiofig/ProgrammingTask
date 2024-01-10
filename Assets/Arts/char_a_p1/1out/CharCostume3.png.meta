@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -69,7 +69,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -1458,7 +1458,6 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CharCostume3_61: 49746005
       CharCostume3_3: 26237388
       CharCostume3_13: -1347404861
       CharCostume3_10: 249949204
@@ -1489,8 +1488,8 @@ TextureImporter:
       CharCostume3_51: 885829397
       CharCostume3_38: 1282861734
       CharCostume3_21: 2111014700
-      CharCostume3_15: 1700728094
       CharCostume3_53: 541266460
+      CharCostume3_15: 1700728094
       CharCostume3_55: 1522771024
       CharCostume3_7: 1600901197
       CharCostume3_14: -1660782284
@@ -1520,6 +1519,7 @@ TextureImporter:
       CharCostume3_49: 228405239
       CharCostume3_4: 1893934689
       CharCostume3_32: 378577863
+      CharCostume3_61: 49746005
       CharCostume3_23: -1190542054
       CharCostume3_40: 964740944
   spritePackingTag: 

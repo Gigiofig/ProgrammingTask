@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a952776ed52d7e4abaedb4cce2e4fec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isNextScene: 1
+  sceneInfo: {fileID: 11400000, guid: 34734271b556c8d92bd0017b35d0da6a, type: 2}
   sceneName: 
 --- !u!61 &7912945652031894122
 BoxCollider2D:

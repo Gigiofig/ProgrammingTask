@@ -7,12 +7,15 @@ public class CharacterCustomization : MonoBehaviour
     public int skinNum;
     public Skins[] skins;
     public string className;
-    SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
+
 
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer.sprite != null)
+            SkinChoice();
     }
 
     void Update()
@@ -21,20 +24,21 @@ public class CharacterCustomization : MonoBehaviour
         else if (skinNum < 0) skinNum = skins.Length - 1;
     }
 
-    void LateUpdate()
-    {
-        SkinChoice();
-    }
-
-    void SkinChoice()
+    public void SkinChoice()
     {
         if (spriteRenderer.sprite.name.Contains(className))
         {
             string spriteName = spriteRenderer.sprite.name;
-            spriteName = spriteName.Remove(0, spriteName.Length - 1);
+            int pos = spriteName.LastIndexOf('_');
+            spriteName = spriteName.Remove(0, pos + 1);
             int spriteNum = int.Parse(spriteName);
             spriteRenderer.sprite = skins[skinNum].sprites[spriteNum];
         }
+    }
+
+    public void SetSkin(int spriteNum)
+    {
+        spriteRenderer.sprite = skins[skinNum].sprites[spriteNum];
     }
 }
 

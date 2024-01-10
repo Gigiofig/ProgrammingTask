@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -69,7 +69,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -1494,11 +1494,11 @@ TextureImporter:
       CharCostume4_8: 1442713752
       CharCostume4_19: -1937622522
       CharCostume4_6: 786718772
-      CharCostume4_41: -1798105441
       CharCostume4_47: -402955376
       CharCostume4_10: 1255686072
-      CharCostume4_62: -1792213202
+      CharCostume4_41: -1798105441
       CharCostume4_35: 786229511
+      CharCostume4_62: -1792213202
       CharCostume4_31: 105691553
       CharCostume4_5: 461227536
       CharCostume4_22: -365539036
