@@ -11,7 +11,7 @@ public class SceneChanger : MonoBehaviour
     public string sceneName;
     public void ChangeScene()
     {
-        if (sceneNum == 1 && isNextScene)
+        if (sceneNum == 1 && !isNextScene)
         {
             sceneInfo.hasClothes = false;
             sceneInfo.hasHair = false;

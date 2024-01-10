@@ -45,14 +45,20 @@ public class PlayerScript : MonoBehaviour
         if (sceneInfo.hasClothes)
         {
             ClothesComponent.enabled = true;
+            customClothes.skinNum = sceneInfo.clothesIndex;
+            customClothes.SetSkin(sceneInfo.clothesIndex);
         }
         if (sceneInfo.hasHat)
         {
             HatComponent.enabled = true;
+            customHat.skinNum = sceneInfo.hatIndex;
+            customHat.SetSkin(sceneInfo.hatIndex);
         }
         if (sceneInfo.hasHair)
         {
             HairComponent.enabled = true;
+            customHair.skinNum = sceneInfo.hairIndex;
+            customHair.SetSkin(sceneInfo.hairIndex);
         }
     }
 

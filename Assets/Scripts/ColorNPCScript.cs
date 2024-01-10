@@ -16,10 +16,11 @@ public class ColorNPCScript : MonoBehaviour
     [SerializeField] Image hairPreview, hatPreview, clothesPreview;
     [SerializeField] PlayerScript player;
     public SpriteRenderer inAreaNotification;
-    private Color hairIndex = new Color(0, 0, 0, 0);
-    private Color hatIndex = new Color(0, 0, 0, 0);
-    private Color clothesIndex = new Color(0, 0, 0, 0);
+    private Color hairIndex = new Color(1, 1, 1, 1);
+    private Color hatIndex = new Color(1, 1, 1, 1);
+    private Color clothesIndex = new Color(1, 1, 1, 1);
     private GameObject selectedObject;
+    private Image currentSelection;
     private float R = 0;
     private float G = 0;
     private float B = 0;
@@ -77,14 +78,22 @@ public class ColorNPCScript : MonoBehaviour
     public void SetRed(float sliderValue)
     {
         R = sliderValue;
+        SetColor();
     }
     public void SetGreen(float sliderValue)
     {
         G = sliderValue;
+        SetColor();
     }
     public void SetBlue(float sliderValue)
     {
         B = sliderValue;
+        SetColor();
+    }
+
+    public void SetColor()
+    {
+        currentSelection.color = new Color(R, G, B, 1);
     }
 
     void CloseShop()
@@ -98,42 +107,52 @@ public class ColorNPCScript : MonoBehaviour
         if (selectedObject != null) selectedObject.GetComponent<Image>().color = new Color(0.2250406f, 0.5660378f, 0.09344962f, 1f);
         selectedObject = ClickedButton;
         selectedObject.GetComponent<Image>().color = new Color(0.5682794f, 0.8962264f, 0.4438857f, 1f);
-        // if (ClickedButton.name.Contains("Hair"))
-        // {
-        // }
-        // else if (ClickedButton.name.Contains("Hat"))
-        // {
-
-        // }
-        // else if (ClickedButton.name.Contains("Clothes"))
-        // {
-
-        // }
+        if (ClickedButton.name.Contains("Hair"))
+        {
+            currentSelection = hairPreview;
+            hatPreview.color = hatIndex;
+            clothesPreview.color = clothesIndex;
+        }
+        else if (ClickedButton.name.Contains("Hat"))
+        {
+            currentSelection = hatPreview;
+            hairPreview.color = hairIndex;
+            clothesPreview.color = clothesIndex;
+        }
+        else if (ClickedButton.name.Contains("Clothes"))
+        {
+            currentSelection = clothesPreview;
+            hatPreview.color = hatIndex;
+            hairPreview.color = hairIndex;
+        }
     }
 
-    private void ConfirmSelection()
+    public void ConfirmSelection()
     {
-        if (selectedObject != null && selectedObject.GetComponent<Image>().color != new Color(R, G, B, 1))
+        if (new Color(1, 1, 1, 1) == new Color(R, G, B, 1) && recolorAttempts < 7)
         {
-            if (selectedObject.name.Contains("Clothes"))
+            recolorAttempts += 1;
+        }
+        else if (recolorAttempts > 0 && new Color(1, 1, 1, 1) != new Color(R, G, B, 1))
+        {
+            recolorAttempts -= 1;
+        }
+        if (selectedObject != null && recolorAttempts >= 0)
+        {
+            if (selectedObject.name.Contains("Clothes") && clothesPreview.color != new Color(R, G, B, 1))
             {
                 clothesPreview.color = new Color(R, G, B, 1);
+                clothesIndex = clothesPreview.color;
             }
-            else if (selectedObject.name.Contains("Hat"))
+            else if (selectedObject.name.Contains("Hat") && hatPreview.color != new Color(R, G, B, 1))
             {
                 hatPreview.color = new Color(R, G, B, 1);
+                hatIndex = hatPreview.color;
             }
-            else if (selectedObject.name.Contains("Hair"))
+            else if (selectedObject.name.Contains("Hair") && hairPreview.color != new Color(R, G, B, 1))
             {
                 hairPreview.color = new Color(R, G, B, 1);
-            }
-            if (Color.white == new Color(R, G, B, 1))
-            {
-                recolorAttempts += 1;
-            }
-            else
-            {
-                recolorAttempts -= 1;
+                hairIndex = hairPreview.color;
             }
         }
         UpdateBalance();
